@@ -3,6 +3,8 @@ const app = express();
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const cors = require('cors');
+
 
 const userRoutes = require('./api/routes/user');
 
@@ -11,6 +13,11 @@ mongoose.connect(`mongodb+srv://vysakhajithkumar23:${process.env.MONGO_ATLAS_PWD
         useNewUrlParser: true,
         useUnifiedTopology: true
     });
+app.use(cors({
+    origin: 'http://localhost:4200',
+    optionsSuccessStatus: 200,
+    credentials: true
+}));
 
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({ extended: false }));
