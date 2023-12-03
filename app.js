@@ -23,15 +23,16 @@ app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Methods, Origin, X-Requested-With, content-type, Accept, Authorization');
-    if (req.method === 'OPTIONS') {
-        req.header('Access-Control-Allow-Methods', 'POST, PUT, DELETE, GET, PATCH');
-        return res.status(200).json({});
-    }
-    next();
-});
+// app.use((req, res, next) => {
+//     // res.setHeader('Custom-Header', 'Hello, this is a custom header');
+//     res.header('Access-Control-Allow-Origin', '*');
+//     res.header('Access-Control-Allow-Methods, Origin, X-Requested-With, content-type, Accept, Authorization');
+//     if (req.method === 'OPTIONS') {
+//         req.header('Access-Control-Allow-Methods', 'POST, PUT, DELETE, GET, PATCH');
+//         return res.status(200).json({});
+//     }
+//     next();
+// });
 
 app.use('/user', userRoutes);
 
